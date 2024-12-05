@@ -16,7 +16,7 @@ The main inspiration for this project has been my personal experience on embedde
 ### 2.2. Run Dependencies
 The dependencies to run the scripts are as ***Tested on Debian 12***:
 * awk
-* 
+* bash
 
 ### 2.2. Configuration
 Configuration is done through a terminal user interface (TUI), using a static binary, DIBS creates a configuration file that helper scripts then read and
