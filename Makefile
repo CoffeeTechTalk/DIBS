@@ -25,7 +25,7 @@ $(BUILD_DIR)/$(BIN): $(OBJS) | $(BUILD_DIR)
 	$(CC) -o $@ $(SRC) $(LIBS)
 
 # Create object files
-$(BUILD_DIR)/%.o: $(SRC) | $(BUILD_DIR)
+$(BUILD_DIR)/$(OBJS): $(SRC) | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -o $@ $<
 
 # Clean up

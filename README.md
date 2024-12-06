@@ -28,7 +28,7 @@ The supported settings are:
 * Add new user
 * Manage users, passwords and groups
 * Manage list of additional packages including [offline packages](#231-offline-packages)
-* 
+* Interface and tunnel management via [Networking](#232-networking)
 
 ### 2.3. Advanced Configuration
 If you need to setup additional functionality beyond what is available via apt-get, then this is the section for you!
@@ -39,7 +39,7 @@ Additional user files and directories may be added by placing them in the **user
 To pick a specific location for each file or directory, simply use the file picker under "User Files" in the TUI.
 
 #### 2.3.1. Offline packages
-#### 2.3.1. Networking
+#### 2.3.2. Networking
 
 ## 3. Special Thanks
 
@@ -50,4 +50,4 @@ I am in no way responsible for anything that happens to your machine if you run 
 
 The only guarantee I'll provide is that I personally use it.
 
-I have implemented basic checks and stops, but nothing more, the code is designed to make **BIG** changes to whichever directory you point it into, along with changes that have system-wide consequences, point it in the wrong direction, and you will be
+I have implemented basic checks and stops, but nothing more, the code is designed to make **BIG** changes to whichever directory you point it into, along with changes that have system-wide consequences, do not point it in the wrong direction.
