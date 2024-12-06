@@ -172,8 +172,8 @@ void ini::parse(){
     std::string section;
     while(f.is_open() && !f.eof()){
         line = ini::readCleanLine(lineType);
-        std::cout << line << std::endl;
         if(lineType == LineType::SECTION){
+            section = line;
             this->addSection(section);
         }
         else if(lineType == LineType::KEY){
@@ -184,9 +184,14 @@ void ini::parse(){
 
 void ini::write(){
     // read this->sections and write them to file
+    this->f << this->header << std::endl;
     for (size_t i = 0; (i < this->numOfSections) && (this->f.is_open()); i++){
         this->writeSection(this->sections[i]);
+        if (i != this->numOfSections - 1){
+            this->f << std::endl;
+        }
     }
+    this->f << this->footer;
 }
 
 void ini::write(std::string path){
@@ -233,7 +238,7 @@ void ini::populateSection(std::string section, std::string keyLine){ // pushes b
     this->addSection(section);
     size_t pos = keyLine.find('=');
     std::string keyName = keyLine.substr(0, pos);
-    std::string keyValue = keyLine.substr(pos + 1);
+    std::string keyValue = '\"' + keyLine.substr(pos + 1) + '\"';
 
     this->sections[this->numOfSections - 1].addKey(keyName, keyValue);
 }
@@ -251,10 +256,10 @@ bool ini::sectionExists(std::string name){
 std::string ini::readCleanLine(LineType& type){
     std::string line;
     std::getline(this->f, line);
-    // Remove whitespaces
-    this->removeWhitespaces(line);
     // remove comments
     this->removeComments(line);
+    // Remove whitespaces
+    this->removeWhitespaces(line);
 
     // Remove whitespaces around '='
     this->removeSpacesAround(line, '=');
@@ -279,11 +284,12 @@ std::string ini::readCleanLine(LineType& type){
 
 void ini::writeSection(Section section){
     this->f << "[" << section.getName() << "]" << std::endl;
+    std::cout << "[" << section.getName() << "]" << std::endl;
     for (size_t i = 0; i < section.getNumOfKeys(); i++){
         Key *tmpKey = section.readKey(i);
         this->f << tmpKey->getName() << " = " << tmpKey->getValue() << std::endl;
+        std::cout << tmpKey->getName() << " = " << tmpKey->getValue() << std::endl;
     }
-    this->f << std::endl;
 }
 
 // Methods - line control
