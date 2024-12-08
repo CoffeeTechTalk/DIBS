@@ -55,8 +55,8 @@ public:
     // Operators
     void operator+=(Key const& key);          // add key to section
     void operator-=(std::string const& name); // remove key from section
-    bool operator==(std::string const& name);     // compare section name with string
-    bool operator!=(std::string const& name);     // compare section name with string
+    bool operator==(std::string const& name); // compare section name with string
+    bool operator!=(std::string const& name); // compare section name with string
     
 private:
     // Variables

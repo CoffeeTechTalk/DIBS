@@ -11,10 +11,10 @@ Date:           2024-12-04
 Description:    Main file for the DIBS project.
 Changelog:
   Ver: 0.0.0: initial project structure built and commited
+  Ver: 0.1.0: Finished cfg manager and started on UI
 */
 
-#include <ncurses.h>
-#include <unistd.h>
+#include "ui/uiHandler.hpp"
 using namespace std;
 
 int main(int argc, char *argv[]) {
