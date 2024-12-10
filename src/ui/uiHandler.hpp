@@ -27,17 +27,63 @@ The TUI should look something like this:
 |_________________________________|
 | status and stuff                |
 +---------------------------------+
+only now do I relise the amount of work i created for myself :(
 */
 class filePicker{
+// TODO: submenu with a simple file picker, or just use user input idc
+};
+
+class Option {
+public:
+    // Constructors
+    option(std::string title, std::string value);
+    option(std::string title);
+
+    // Getters
+    inline std::string getTitle() const;
+    inline std::string getValue() const;
+    inline bool getIsEditable() const;
+
+    // Setters
+    void setTitle(std::string title);
+    void setValue(std::string value);
+    void setIsEditable(bool isEditable);
+
+    // Methods
+    void drawOption();
+};
+
+class Menu {
+public:
+    // Constructors
+    menu(std::string title, std::vector<Option> options);
+    menu(std::string title);
+
+    // Getters
+    inline std::string getTitle() const;
+    std::vector<std::string> getOptions() const;
+    inline size_t getNumOptions() const;
+    void *getSubMenu() const;
+
+    // Setters
+    void setTitle(std::string title);
+    void setOptions(std::vector<std::string> options);
+    void addOption(std::string option);
+    void setSubMenu(void *subMenu);
+
+    // Methods
+    void drawMenu();
+private:
+    std::string title;
+    std::vector<std::string> options;
+    size_t numOptions = 0;
+    void *subMenu; // point to submenu, IE left menu option pointing to right hand menu or pop up
+
 
 };
 
-class menu {
-
-};
-
-class popUp {
-
+class PopUp {
+    // TODO: submenu that pops up and asks for basic user input
 };
 
 /*
